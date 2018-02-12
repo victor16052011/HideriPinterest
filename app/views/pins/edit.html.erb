@@ -1,0 +1,10 @@
+<% @title="Editar Pin" %>
+<div class="navbar navbar-default text-right" style="padding: 15px;">
+  <%= button_to pins_path, {method: :get, class: "btn btn-info btn-sm text-blanco"} do %>
+    <span class="fa fa-arrow-circle-left icono-20" aria-hidden="true"> </span> Regresar
+  <% end %>
+  <%= button_to @pin , {method: :get, class: "btn btn-primary btn-sm text-blanco"} do %>
+    <span class="fa fa-search icono-20" aria-hidden="true"> </span> Consultar
+  <% end %>
+</div>
+<%= render 'form', pin: @pin %>

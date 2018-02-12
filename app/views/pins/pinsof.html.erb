@@ -1,0 +1,76 @@
+<% @title="Mi listado Pins" %>
+<p id="notice"><%= notice %></p>
+
+<!--INICIO BOTON NUEVO-->
+<% if user_signed_in? %>
+  <div class="navbar navbar-default text-right" style="padding: 15px;">
+    <%= button_to new_pin_path, {method: :get, class: "btn btn-verde btn-sm text-blanco"} do %>
+      <span class="fa fa-plus-circle icono-20" aria-hidden="true"> </span> Nuevo Pin
+    <% end %>
+  </div>
+<% end %>
+<!---->
+<!--INICIO LISTADO PINS-->
+<% if @pins.length > 0  %>
+  <div id="dvGaleria" >
+    <% @pins.each do |pin| %>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="thumbnail content-img">
+          <div class="content-title">
+            <%= pin.name %>
+          </div>
+          <%= image_tag(pin.photo, :style => "width:300px",:title => pin.description, :href => pin.photo) %>
+          <div class="content-description">
+            <p><%= pin.description %></p>
+          </div>
+          <div class="content-buttons">
+            <%= button_to pin, {method: :get, class: "btn btn-primary btn-sm text-blanco"} do %>
+              <span class="fa fa-search icono-20" aria-hidden="true"> </span> Consultar
+            <% end %>
+
+            <% if user_signed_in? %>
+              <%= button_to edit_pin_path(pin), {method: :get, class: "btn btn-info btn-sm text-blanco"} do %>
+                <span class="fa fa-pencil-square icono-20" aria-hidden="true"> </span> Editar
+              <% end %>
+              <%= button_to pin, {method: :delete,data: { confirm: '¿Deseas eliminar el pin seleccionado?' }, class: "btn btn-danger btn-sm text-blanco"} do %>
+                <span class="fa fa-trash icono-20" aria-hidden="true"> </span> Eliminar
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="alert alert-warning">
+    <i class="fa fa-exclamation-circle icono-20">&nbsp;</i>SIN RESULTADOS
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $('#dvGaleria').magnificPopup({
+                    delegate: 'img',
+                    removalDelay: 300,
+                    // main options
+                    disableOn: function () {
+                        if ($(window).width() < 600) {
+                            //return false;
+                        }
+                        return true;
+                    },
+                    mainClass: 'mfp-fade',
+                    image: {
+                        tError: 'Error al buscar imagen.<i class="fa fa-frown-o"></i>',
+                        titleSrc: function (item) {
+                            return item.el.attr('title')+"<br>";
+                        }
+                    },
+                    gallery: {
+                        enabled: true,
+                        tPrev: 'Anterior',
+                        tNext: 'Siguiente', // title for right button
+                        tCounter: '<span class="mfp-counter">%curr% de %total%</span>' // markup of counter
+                    },
+                    type: 'image'
+                });
+</script>

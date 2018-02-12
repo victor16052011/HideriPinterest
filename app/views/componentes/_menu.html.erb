@@ -1,0 +1,70 @@
+<style type="text/css">
+    nav  a:hover{
+        background: transparent !important;
+    }
+</style>
+<nav class="navbar navbar-default navbar-xs" style="border-radius: 0px;border-top:0px;">
+    <div class="container-fluid navbar-inner-sm">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand text-blanco" href="#_">
+                HIDERI
+            </a>
+        </div>
+        <!--============================================-->
+        <!--Inicio Menu-->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/"><i class="fa fa-home">&nbsp;</i>Inicio</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#_" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-image">&nbsp;</i>Pinterest
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/mypins/">
+                                <i class="fa fa-user">&nbsp;</i>Mis pines
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/pins/">
+                                <i class="fa fa-users">&nbsp;</i>Todos los pines
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right text-blanco">
+                <%if current_user.nil? %>
+                    <li>
+                        <a href="/users/sign_in">
+                            <i class="fa fa fa-user-circle">&nbsp;</i>Ingresar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/users/sign_up">
+                            <i class="fa fa-users">&nbsp;</i>Registrarse
+                        </a>
+                    </li>
+                <% else %>
+                    <li>
+                        <a href="/users/sign_out" data-method="delete">
+                            <i class="fa fa-sign-out">&nbsp;</i>Salir
+                        </a>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+        <!--===============-->
+
+    </div>
+</nav>

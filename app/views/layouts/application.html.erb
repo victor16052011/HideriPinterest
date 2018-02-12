@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> HIDERI | <%= @title %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <link rel="stylesheet" type="text/css" href="https://sgep.000webhostapp.com/SGEP/media/librerias/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://sgep.000webhostapp.com/SGEP/media/css/css_EstilosSys.css">
+	<link rel="stylesheet" type="text/css" href="https://sgep.000webhostapp.com/SGEP/media/librerias/bootstrap-notify/animate.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://sgep.000webhostapp.com/SGEP/media/librerias/bootstrapvalidator/dist/css/bootstrapValidator.min.css">
+	<link rel="stylesheet" type="text/css" href="https://sgep.000webhostapp.com/SGEP/media/librerias/bootstrap/css/bootstrap-select.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.1/masonry.pkgd.js"></script>
+  </head>
+
+  <body>
+    <!--INICIO HEADER-->
+	<div class="container-fluid head-sys">
+		<div class="row">
+			<!--Inicio Ingresar-->
+			<div class="text-right" style="padding-bottom: 0px;position: relative;top: 11px;">
+			</div>
+			<!--===================-->
+			<!--INICIO MENU-->
+			<div class="content-menu">
+				<%= render "componentes/menu" %>
+			</div>
+			<!--===========-->
+		</div>
+	</div>
+	<!--FIN HEADER-->
+	<!--Inicio Cuerpo-->
+	<div id="contentBODY" class="row content-sys">
+		<div class="container-fluid content-body">
+			<div >
+				<p class="notice"><%= notice %></p>
+	       		<p class="alert"><%= alert %></p>
+			</div>
+			<%= yield %>
+		</div>
+	</div>
+	<!--Fin Cuerpo-->
+
+	<!--INICIO FOOTER-->
+	<div class="container-fluid footer-sys">
+		<div class="row">
+			<div class="col-xs-6">
+				<h5>
+					Copyright © Todos los Derechos Reservados
+				</h5>
+			</div>
+			<div class="col-xs-6 text-right" style="padding-top:5px;">
+			</div>
+		</div>
+	</div>
+	<!--FIN FOOTER-->
+	<!--***********************-->
+	<script type="text/javascript">
+		$("[data-toggle='tooltip']").tooltip();
+	</script>
+  </body>
+</html>

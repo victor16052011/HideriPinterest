@@ -1,0 +1,69 @@
+<% @title="Consultar Pin" %>
+<div class="navbar navbar-default text-right" style="padding: 15px;">
+  <%= button_to pins_path, {method: :get, class: "btn btn-info btn-sm text-blanco"} do %>
+    <span class="fa fa-arrow-circle-left icono-20" aria-hidden="true"> </span> Regresar
+  <% end %>
+  <%= button_to edit_pin_path(@pin) , {method: :get, class: "btn btn-primary btn-sm text-blanco"} do %>
+    <span class="fa fa-pencil-square icono-20" aria-hidden="true"> </span> Editar
+  <% end %>
+  <%= button_to pinsof_path(@pin.user.id) , {method: :get, class: "btn btn-warning btn-sm text-blanco"} do %>
+    <span class="fa fa-plus-square icono-20" aria-hidden="true"> </span> Más pines
+  <% end %>
+</div>
+
+<div id="dvGaleria" class="container-fluid" >
+    <div class="row grid">
+      <div class="">
+        <div class="item col-xs-12 col-sm-12 col-md-3 col-lg-3" style="">
+          <div class="thumbnail content-img">
+            <div class="content-title">
+              <%= @pin.name %>
+            </div>
+            <%= image_tag(@pin.photo, :style => "width:300px",:title => @pin.description, :href => @pin.photo) %>
+            <div class="content-description">
+              <p><%= @pin.description %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script type="text/javascript">
+  $('#dvGaleria').magnificPopup({
+                    delegate: 'img',
+                    removalDelay: 300,
+                    // main options
+                    disableOn: function () {
+                        if ($(window).width() < 600) {
+                            //return false;
+                        }
+                        return true;
+                    },
+                    mainClass: 'mfp-fade',
+                    image: {
+                        tError: 'Error al buscar imagen.<i class="fa fa-frown-o"></i>',
+                        titleSrc: function (item) {
+                            return item.el.attr('title')+"<br>";
+                        }
+                    },
+                    gallery: {
+                        enabled: true,
+                        tPrev: 'Anterior',
+                        tNext: 'Siguiente', // title for right button
+                        tCounter: '<span class="mfp-counter">%curr% de %total%</span>' // markup of counter
+                    },
+                    type: 'image'
+                });
+$('#dvGaleria').masonry({
+      columnWidth:200,
+      itemSelector: ".item"
+    });
+  $(document).ready(function () {
+    $('#dvGaleria').masonry({
+      columnWidth:200,
+      itemSelector: ".item"
+    });
+  });
+</script>

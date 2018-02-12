@@ -1,0 +1,8 @@
+<% @title="Nuevo Pin" %>
+<div class="navbar navbar-default text-right" style="padding: 15px;">
+  <%= button_to pins_path, {method: :get, class: "btn btn-info btn-sm text-blanco"} do %>
+    <span class="fa fa-arrow-circle-left icono-20" aria-hidden="true"> </span> Regresar
+  <% end %>
+</div>
+
+<%= render 'form', pin: @pin %>
